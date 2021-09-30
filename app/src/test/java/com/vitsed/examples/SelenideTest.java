@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Condition.name;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.exist;
 
-public class GoogleTest {
+public class SelenideTest {
 
     @Test
     public void pureSelenium() {
@@ -30,7 +30,7 @@ public class GoogleTest {
 
 
     @Test
-    public void userCanSearchKeyword() {
+    public void filterWork() {
         List<SelenideElement> elements = new ArrayList();
         List<String> text = new ArrayList<>();
         Map<String, String> titlesAndPrice = new TreeMap<>();
