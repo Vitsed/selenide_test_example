@@ -3,12 +3,47 @@
  */
 package com.vitsed.examples;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        System.out.println("Hello, Vitsed!");
+        addStarsDelimiter(70);
+
+        FileInputStream fis;
+        Properties property = new Properties();
+
+        try {
+            fis = new FileInputStream("app/src/main/resources/my_test.properties");
+            property.load(fis);
+
+            String street = property.getProperty("address.street");
+            String house = property.getProperty("address.house");
+            String flat = property.getProperty("address.flat");
+
+
+            System.out.println("Address is:  str." + street +
+                    "# " + house + " apt: " + flat
+            );
+        } catch (IOException e) {
+            System.err.println("ERROR: Файл свойств отсутствует!");
+        }
+        addStarsDelimiter(70);
+    }
+
+    private static void addStarsDelimiter(int star) {
+        if(star <= 0) {
+            star = 50;
+        }
+        for (int i = 0; i < star; i++) {
+            System.out.print("*");
+            if(i == star - 1){
+                System.out.print("\n");
+            }
+        }
     }
 }
